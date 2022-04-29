@@ -1,0 +1,28 @@
+{
+  "name": "apiuniversidad",
+  "version": "1.0.0",
+  "description": "Api Universidad para Desarrollo web",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JpRoGarcia/ApiUniversidad.git"
+  },
+  "author": "JpRoGarcia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JpRoGarcia/ApiUniversidad/issues"
+  },
+  "homepage": "https://github.com/JpRoGarcia/ApiUniversidad#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
