@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 require('../config/index.config')
 
-const ConctarDB = process.env.URI_MONGODB +'/'+ process.env.MONGODB;
+const ConectarDB = process.env.URI_MONGODB +'/'+ process.env.DB_MONGODB;
 
-mongoose.connect(ConctarDB, {
+mongoose.connect(ConectarDB, {
       useUnifiedTopology: true,
       useNewUrlParser: true
 }).then(db => console.log("Se Conceto Base de Datos"))

@@ -1,4 +1,4 @@
-process.env.URI_MONGODB = "mongodb://localhost:27017";
+process.env.URI_MONGODB = "mongodb+srv://pea0715:pea0715@cluster0.zt8sj.mongodb.net";
 
 process.env.DB_MONGODB =  "universidad"
 
