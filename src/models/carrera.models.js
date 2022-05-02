@@ -6,7 +6,7 @@ const CarreraSchema = new Schema({
         required       : [ true, 'El Codigo de la Carrera es Obligatorio' ],
         unique         : [ true, 'El Codigo de la Carrera ya existe' ],
         maxlength      : [ 10, 'El Codigo no puede exceder 10 caracteres' ],
-        minlength      : [ 2, 'El Codigo debe contener Minimo 3 caracteres' ]
+        minlength      : [ 2, 'El Codigo debe contener Minimo 2 caracteres' ]
     },
     nombre: {
         type           : String, 
