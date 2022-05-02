@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "281e8ecc-fd69-42d8-8955-9ebed92b12a2",
+		"name": "Universidad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Estudiante",
+			"item": [
+				{
+					"name": "Consultar Estudiantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/estudiante",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Estudiantes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nro_identificacion\": \"116438765\",\r\n    \"nombre_1\": \"Hector\",\r\n    \"nombre_2\": \"Fernando\",\r\n    \"apellido_1\": \"Hernandez\",\r\n    \"apellido_2\": \"Gutierres\",\r\n    \"fecha_de_nacimiento\": \"12/04/2000\",\r\n    \"carrera\": \"UdeMI725\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/estudiante",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Estudiantes",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre_1\": \"Javier\",\r\n    \"nombre_2\": \"Camilo\",\r\n    \"apellido_1\": \"Guzman\",\r\n    \"apellido_2\": \"Ospina\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/estudiantes/626f0ffbb9e9f129b3ed1077",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"estudiantes",
+								"626f0ffbb9e9f129b3ed1077"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Estudiantes",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/estudiante/626f0ffbb9e9f129b3ed1077",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"estudiante",
+								"626f0ffbb9e9f129b3ed1077"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrera",
+			"item": [
+				{
+					"name": "Consultar Carrera",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/carrera/UdeMI725",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carrera",
+								"UdeMI725"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Carreras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/carrera",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carrera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Carrera",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": \"UdeMI726\",\r\n    \"nombre\": \"Ing Energia\",\r\n    \"descripcion\": \"Cosas Con electricidad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/carrera",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carrera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Carrera",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ing Civil\",\r\n    \"descripcion\": \"Construccion de cosas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/carreras/626f3b03552ad1fc2b699f25",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carreras",
+								"626f3b03552ad1fc2b699f25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Carrera",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/carrera/626b7403c8732f6d9a21940b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carrera",
+								"626b7403c8732f6d9a21940b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
