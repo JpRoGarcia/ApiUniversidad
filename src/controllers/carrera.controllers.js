@@ -1,74 +1,73 @@
-const Carrera = require("../models/carrera.models");
 const Estudiante = require("../models/estudiante.models");
+const Carrera = require("../models/carrera.models");
 const errorFormato = require("../validation/messageError")
 
-const CreateCarrera = async (req, res) => {
+const CreateEstudiante = async (req, res) => {
     try {
-        const {codigo, nombre, descripcion} = req.body;
-        const NewCarrera = new Carrera({codigo, nombre, descripcion});
-        respuesta = await NewCarrera.save();
-        res.send(respuesta)
+        const {nro_identificacion, nombre_1, nombre_2, apellido_1, apellido_2, fecha_de_nacimiento, activo, carrera} = req.body;
+        const respuestaC = await Carrera.find({codigo: carrera, activo: true})
+        if(respuestaC.length > 0){
+            const NewEstudiante = new Estudiante({nro_identificacion, nombre_1, nombre_2, apellido_1, apellido_2, fecha_de_nacimiento, activo, carrera});
+            respuesta = await NewEstudiante.save();
+        }else{
+            res.send("Codigo de Carrera no Existe")
+        }
     } catch (error) {
         respuesta = errorFormato(error.message);
-        console.log(respuesta);
-        res.send(respuesta);
+        res.status(500).send(respuesta);
     }
 }
 
-const ReadCarrera = async (req, res) => {
+const ReadEstudiante = async (req, res) => {
     respuesta = {}
     try {
-        const respuestaC = await Carrera.find({codigo: req.params.codigo, activo: true})
-        const respuestaE = await Estudiante.find({carrera: req.params.codigo, activo: true})
-        respuesta = respuestaC.concat(respuestaE)
+        const respuesta = await Estudiante.aggregate([
+            {
+                $lookup:{
+                    from: "carreras",
+                    localField: "carrera",
+                    foreignField: "codigo",
+                    as: "EstudianteCarrera"
+                }
+            },
+            {$match: {activo: true}}
+        ])
+    
         res.send(respuesta);
     } catch (Error) {
         respuesta.ok = false;
-        respuesta.message = 'Error al Consultar Carrera';
+        respuesta.message = 'Error al Eliminar Carrera';
         respuesta.info = Error
         res.status(500).send(respuesta);
     }
 
-}
-
-const ReadCarreras = async (req, res) => {
-    respuesta = {}
-    try {
-        const respuesta = await Carrera.find({activo: true});
-        res.send(respuesta);
-    } catch (Error) {
-        respuesta.ok = false;
-        respuesta.message = 'Erroe al Eliminar Carrera';
-        respuesta.info = Error
-        res.status(500).send(respuesta);
-    }
 
 }
 
-const UpdateCarrera = async (req, res) => {
+const UpdateEstudiante = async (req, res) => {
     try {
-        const { nombre, descripcion } = req.body;
-        respuesta = await Carrera.findOneAndUpdate(req.params.id, { nombre, descripcion });
-        res.send(respuesta);
+        const { nombre_1, nombre_2, apellido_1, apellido_2 } = req.body;
+        respuesta = await Estudiante.findOneAndUpdate(req.params.id, 
+            { nombre_1, nombre_2, apellido_1, apellido_2 });
+        res.send("Estudiante Editado Exitosamente");
     } catch (error) {
         respuesta = errorFormato(error.message);
-        res.send("Carrera Editada Exitosamente");
+        res.status(500).send(respuesta);
     }
 }
 
-const DeleteCarrera = async (req, res) => {
+const DeleteEstudiante = async (req, res) => {
     respuesta = {}
     try {
         const { activo } = req.body;
-        respuesta = await Carrera.findOneAndUpdate(req.params.id, { activo: false })
-        res.send("Carrera Eliminado Exitosamente");  
+        respuesta = await Estudiante.findOneAndUpdate(req.params.id, { activo: false })
+        res.send("Estudiante Eliminado Exitosamente");
     } catch (Error) {
         respuesta.ok = false;
-        respuesta.message = 'Erroe al Eliminar Carrera';
+        respuesta.message = 'Error al Eliminar Carrera';
         respuesta.info = Error
         res.status(500).send(respuesta);
     }
 }
 
-
-module.exports = {CreateCarrera, ReadCarrera, ReadCarreras, UpdateCarrera, DeleteCarrera}
+module.exports = {CreateEstudiante, ReadEstudiante, UpdateEstudiante, DeleteEstudiante}
