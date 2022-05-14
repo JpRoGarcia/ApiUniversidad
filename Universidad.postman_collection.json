@@ -81,7 +81,7 @@
 				{
 					"name": "Delete Estudiantes",
 					"request": {
-						"method": "PUT",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -201,7 +201,7 @@
 				{
 					"name": "Delete Carrera",
 					"request": {
-						"method": "PUT",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
